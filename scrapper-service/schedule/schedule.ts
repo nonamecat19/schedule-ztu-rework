@@ -1,11 +1,16 @@
 import {api} from "encore.dev/api";
 
 import {getGroupSchedule} from "../shared/scrapper";
-import {parseScheduleTables} from "../shared/parser";
+import {parseScheduleTables, Table} from "../shared/parser";
+
+interface GetGroupScheduleResponse {
+    tables: Table[]
+    meta: {}
+}
 
 export const get = api(
     {expose: true, method: "GET", path: "/schedule/:groupId"},
-    async ({groupId}: { groupId: string }) => {
+    async ({groupId}: { groupId: string }): Promise<GetGroupScheduleResponse> => {
 
         const content = await getGroupSchedule(groupId)
 

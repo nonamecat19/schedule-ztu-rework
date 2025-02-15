@@ -34,7 +34,7 @@ type Pair = {
 
 type Row = (Pair | null)[]
 
-type Table = {
+export type Table = {
     title: string
     rows: Row[]
 }
