@@ -1,39 +1,21 @@
-import { api } from "encore.dev/api";
+import {api} from "encore.dev/api";
 
-// Welcome to Encore!
-// This is a simple "Hello World" project to get you started.
-//
-// To run it, execute "encore run" in your favorite shell.
+import {getGroupSchedule} from "../shared/scrapper";
 
-// ==================================================================
-
-// This is a simple REST API that responds with a personalized greeting.
-// To call it, run in your terminal:
-//
-//	curl http://localhost:4000/hello/World
-//
 export const get = api(
-  { expose: true, method: "GET", path: "/hello/:name" },
-  async ({ name }: { name: string }): Promise<Response> => {
-    const msg = `Hello ${name}!`;
-    return { message: msg };
-  }
+    {expose: true, method: "GET", path: "/schedule/:groupId"},
+    async ({groupId}: { groupId: string }): Promise<Response> => {
+
+        const content = await getGroupSchedule(groupId)
+
+        const msg = `Hello ${content}!`;
+        return {message: msg};
+    }
 );
 
 interface Response {
-  message: string;
+    message: string;
 }
-
-// ==================================================================
-
-// Encore comes with a built-in development dashboard for
-// exploring your API, viewing documentation, debugging with
-// distributed tracing, and more. Visit your API URL in the browser:
-//
-//     http://localhost:9400
-//
-
-// ==================================================================
 
 // Next steps
 //
