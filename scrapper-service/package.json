@@ -18,7 +18,8 @@
     "dotenv": "^16.4.7",
     "encore.dev": "^1.46.4",
     "ioredis": "^5.5.0",
-    "puppeteer": "^24.2.1"
+    "puppeteer": "^24.2.1",
+    "redis": "^4.7.0"
   },
   "optionalDependencies": {
     "@rollup/rollup-linux-x64-gnu": "^4.13.0"
